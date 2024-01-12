@@ -1,0 +1,10 @@
+Pendant notre dernière année dans le cycle d'ingénieurs, nous avons été chargés de développer un programme sur une carte BeagleBone Black afin de réaliser une variation en temps réel du rapport cyclique d'un signal PWM. 
+
+Les composants nécessaires comprennent une carte BeagleBone Black, un potentiomètre pour ajuster le rapport cyclique, et une carte SD contenant une image d'un système d'exploitation Linux.
+
+Le programme C que nous avons conçu est une application multithread avec deux threads distincts. 
+Le premier thread, appelé "thread_adc," est responsable de la lecture continue des données analogiques provenant d'un convertisseur analogique-numérique (CAN). 
+Après chaque lecture, ce thread déclenche un signal pour notifier le second thread, nommé "thread_pwm."
+
+Le thread_pwm réagit à ce signal en calculant une nouvelle valeur pour le rapport cyclique de la sortie PWM. 
+Les valeurs lues à partir du CAN sont enregistrées dans une base de données SQLite, accompagnées d'horodatages pour chaque mesure.
